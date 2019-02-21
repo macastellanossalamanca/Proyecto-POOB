@@ -134,7 +134,7 @@ public class CityOfHeroes
 
             double t1,t2;
             if(target==null){
-                parabola(casa, casa.timeToDie(velocity, angle, height,width),velocity, angle, (slow?0.03:0.05));
+                parabola(casa, casa.timeToDie(velocity, angle, height,width),velocity, angle, (slow?0.05:0.08));
 
                 
                 deads.add(casa.getColor());
@@ -144,7 +144,7 @@ public class CityOfHeroes
                 t1 = casa.timeToLand(target,angle, velocity);
                 t2 = casa.timeToDie(velocity, angle, height,width);
                 
-                parabola(casa, Math.min(t1,t2),velocity, angle, (slow?0.03:0.05));
+                parabola(casa, Math.min(t1,t2),velocity, angle, (slow?0.05:0.08));
 
                 casa.getCasa().byeHeroe();
 
@@ -204,6 +204,8 @@ public class CityOfHeroes
         }
         return ans;
     }
+    
+    
     /**
      * Retorna la fuerza de un héroe
      * @param color Color del heroe que queremos conocer
@@ -302,6 +304,14 @@ public class CityOfHeroes
         }
     }
     
+    /**
+     * Retorna si la ultima operación se pudo realizar
+     * @param Si la última operación se pudo realizar
+     */
+    
+    public boolean ok(){
+        return ok;
+    }
     
 }
 
