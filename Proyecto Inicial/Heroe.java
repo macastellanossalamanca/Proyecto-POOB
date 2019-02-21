@@ -137,7 +137,7 @@ public class Heroe
             y=x*Math.tan(theta)-9.8*Math.pow(x,2)/(2*Math.pow(velocity,2)*Math.pow(Math.cos(theta),2));
             ans=(-home.getHeight()<=y && y<k);
         }
-        return ans && home!=target;
+        return ans && home!=target;     
     } 
             
             
@@ -166,7 +166,7 @@ public class Heroe
                 ans=target.getX()-posx<=cal && cal<=-posx+target.getX()+target.getWidth();
             }
         }
-        return ans;
+        return ans && !choca(target,velocity,angle);
     }
             /**
              * Retorna la posicion en x del heroe
@@ -231,8 +231,6 @@ public class Heroe
         double theta = Math.toRadians(angle);
         angle = angle%360 +(angle%360<0?360:0);
         double a=0.5*9.8,b=-velocity*Math.sin(theta),c=target.getHeight()-home.getHeight();
-        System.out.printf("Land       a: %f ,  b: %f   ,  c:   %f\n",a,b,c);
-        System.out.println("Angulo:  "+theta);
         if(choca(target,velocity,angle)){
             t = (90<angle && angle< 270?target.getX()+target.getWidth()-posx:target.getX()-posx)/(velocity*Math.cos(theta));
         }

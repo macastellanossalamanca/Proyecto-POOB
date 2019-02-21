@@ -66,7 +66,7 @@ public class CityOfHeroes
         }
         ok = posible;
     }
-                    
+    
     /**
      * Elimina un edificio de la ciudad
      * @param position Representa la posicion en la que quiero que el edificio sea borrado. Será borrado si x<=position<x+width
@@ -119,8 +119,7 @@ public class CityOfHeroes
         if(pib!=null){
             pib.getOut();
         } 
-    } 
-    
+    }                
     /**
      * Hace saltar un heroe
      * @param color Color de heroe a saltar
@@ -132,23 +131,29 @@ public class CityOfHeroes
         Heroe casa = people.get(color);
         if(casa!=null){
             Building target = seekTarget(casa,velocity,angle);
+
             double t1,t2;
             if(target==null){
-                parabola(casa, casa.timeToDie(velocity, angle, height,width),velocity, angle, (slow?0.06:0.08));
+                parabola(casa, casa.timeToDie(velocity, angle, height,width),velocity, angle, (slow?0.03:0.05));
+
+                
                 deads.add(casa.getColor());
                 removeHeroe(casa.getColor());
             } else{
+                
                 t1 = casa.timeToLand(target,angle, velocity);
                 t2 = casa.timeToDie(velocity, angle, height,width);
-                System.out.printf("Land: %f,  Crash: %f", t1,t2);
-                parabola(casa, Math.min(t1,t2),velocity, angle, (slow?0.06:0.08));
+                
+                parabola(casa, Math.min(t1,t2),velocity, angle, (slow?0.03:0.05));
+
                 casa.getCasa().byeHeroe();
+
                 if(!casa.aterriza(target,velocity,angle) && casa.choca(target,velocity,angle)){
                     if(target.getHardness()>=casa.getStrength()){
                         casa.hit(target.getHardness());
                         deads.add(casa.getColor());
                         removeHeroe(casa.getColor());   
-                    } else{
+                    } else{ 
                         casa.getCasa().byeHeroe();
                         target.setHeroe(casa);
                         target.destroy(target.getHeight()-height+casa.getY());
@@ -172,7 +177,7 @@ public class CityOfHeroes
     public void makeInvisible(){
         Canvas.getCanvas(width, height).setVisible(false);
         isVisible = false;
- 
+        
     }
     
     /**
@@ -199,7 +204,6 @@ public class CityOfHeroes
         }
         return ans;
     }
-    
     /**
      * Retorna la fuerza de un héroe
      * @param color Color del heroe que queremos conocer
@@ -218,10 +222,15 @@ public class CityOfHeroes
         ans = deads.toArray(ans);
         return ans;
     }
-    
+
+        
+        
+        
     /**
      * Finaliza la simulacion
      */
+    
+    
     public void finish(){
         for(Building a: towers){
             a.makeInvisible();
@@ -245,6 +254,8 @@ public class CityOfHeroes
         JOptionPane.showMessageDialog(null,a,"Alerta", JOptionPane.ERROR_MESSAGE);
     }
     
+    
+    
     /**
      * Dado un heroe, busca el edificio en el que chocará o aterrizará, sin tener en cuenta si sale o no del escenario
      * @param casa El heroe que piensa saltar
@@ -261,7 +272,7 @@ public class CityOfHeroes
             for(int i=pibote;i<towers.size() && golpe==bien;i++){
                 golpe=casa.choca(towers.get(i),velocity,angle);
                 bien=casa.aterriza(towers.get(i),velocity,angle);
-                if(golpe!=bien) target=towers.get(i);
+                if(golpe!=bien) target=towers.get(i); 
             }
         } else if(90<angle && angle<= 270){
             for(int i=pibote;i>=0 && golpe==bien;i--){
@@ -278,20 +289,21 @@ public class CityOfHeroes
         double i=delta;
         double vel=(double) velocity;
         double lastx=0.0,lasty=0.0;
-        System.out.println(vel*Math.cos(theta)*i);
+        
         while(i<t){
             pib.move(Math.round(vel*Math.cos(theta)*i-lastx),Math.round(lasty-Math.sin(theta)*velocity*i+0.5*9.8*i*i));
-            System.out.printf("%d     %f    %f\n",Math.round(vel*Math.cos(theta)*i-lastx),vel*Math.cos(theta)*i,lastx);
-            lastx=vel*Math.cos(theta)*i;          
+
+            lastx=vel*Math.cos(theta)*i;
+            
             lasty=Math.sin(theta)*velocity*i-0.5*9.8*i*i;
-            i+=delta;   
+            i+=delta;
+             
+            
         }
-    }  
-    
-    /**
-     * Nos indica si el último método utilizado fue exitoso.
-     */
-    public boolean ok(){
-        return ok;
     }
+    
+    
 }
+
+                    
+    
