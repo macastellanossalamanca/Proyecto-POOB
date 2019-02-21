@@ -131,23 +131,16 @@ public class CityOfHeroes
         Heroe casa = people.get(color);
         if(casa!=null){
             Building target = seekTarget(casa,velocity,angle);
-
             double t1,t2;
             if(target==null){
                 parabola(casa, casa.timeToDie(velocity, angle, height,width),velocity, angle, (slow?0.05:0.08));
-
-                
                 deads.add(casa.getColor());
                 removeHeroe(casa.getColor());
             } else{
-                
                 t1 = casa.timeToLand(target,angle, velocity);
                 t2 = casa.timeToDie(velocity, angle, height,width);
-                
                 parabola(casa, Math.min(t1,t2),velocity, angle, (slow?0.05:0.08));
-
                 casa.getCasa().byeHeroe();
-
                 if(!casa.aterriza(target,velocity,angle) && casa.choca(target,velocity,angle)){
                     if(target.getHardness()>=casa.getStrength()){
                         casa.hit(target.getHardness());
@@ -312,6 +305,23 @@ public class CityOfHeroes
     public boolean ok(){
         return ok;
     }
+    /**
+     * Dice si un salto es seguro
+     * @param heroe Heroe de salto
+     * @param velocity Velocidad de salto
+     * @param angle Ángulo de salto
+     * @return Si el salto es seguro(aterriza en un edificio)
+     */
+    public boolean isSafeJump(String heroe, int velocity, int angle){
+        boolean ans = false;
+        Heroe pib = people.get(heroe);
+        if(pib!=null){
+            Building target = seekTarget(pib, velocity, angle);
+            ans = target!=null && pib.aterriza(target,velocity,angle);
+        }
+        return ans;
+    }
+    
     
 }
 
