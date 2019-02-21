@@ -18,7 +18,7 @@ public class Canvas{
     // shape identity and colors) is slightly more complex than necessary. This
     // is done on purpose to keep the interface and instance fields of the
     // shape objects in this project clean and simple for educational purposes.
-
+    public static int actual = 0;
     private static Canvas canvasSingleton;
     public static final ArrayList<String> colores = new ArrayList(Arrays.asList("red","black","blue","yellow","green","magenta","orange","grey","cyan","pink"));
     /**
@@ -205,10 +205,10 @@ public class Canvas{
             colorString = color;
         }
 
-		public void draw(Graphics2D graphic){
-			setForegroundColor(colorString);
-			graphic.fill(shape);
-		}
+        public void draw(Graphics2D graphic){
+            setForegroundColor(colorString);
+            graphic.fill(shape);
+        }
     }
 
 }

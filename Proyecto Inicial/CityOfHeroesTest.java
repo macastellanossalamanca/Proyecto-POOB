@@ -6,20 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The test class Heroes.
+ * The test class CityOfHeroesTest.
  *
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class Heroes
+public class CityOfHeroesTest
 {
-    /**
-     * Default constructor for test class Heroes
-     */
-    public Heroes()
-    {
-    }
-
     /**
      * Sets up the test fixture.
      *
@@ -28,8 +21,13 @@ public class Heroes
     @Before
     public void setUp()
     {
+        CityOfHeroes c1 = new CityOfHeroes(600,600);
+        CityOfHeroes c2 = new CityOfHeroes(100,100);
     }
-
+    @Test
+    public void segunCVdeberiaCrearCiudad(){
+        
+    }
     /**
      * Tears down the test fixture.
      *
