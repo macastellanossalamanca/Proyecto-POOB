@@ -1,4 +1,5 @@
 
+import java.util.*;
 /**
  * Write a description of class Building here.
  * 
@@ -43,6 +44,7 @@ public class Building
 
     /**
      * Retorna la posicion en x del edificio
+     * @return Posición en x del edificio
      */
     public int getX()
     {
@@ -52,6 +54,7 @@ public class Building
     
     /**
      * Retorna el ancho del edificio
+     * @return Ancho del edificio
      */
     public int getWidth()
     {
@@ -61,6 +64,7 @@ public class Building
     
     /**
      * Retorna la altura del edificio
+     * @return Altura del edifico
      */
     public int getHeight(){
     
@@ -89,11 +93,16 @@ public class Building
     
     /**
      * Retorna si el edifico está dañado
+     * @return Si el edificio está dañado
      */
     public boolean isDamaged(){
         return isDamaged;
     }
     
+    /**
+     * Destruye la parte superior del edificio
+     * @param delta Cantidad a destruir
+     */
     public void destroy(int delta){
         if(delta<=height){
             wall.changeSize(-delta+height,width);
@@ -103,26 +112,53 @@ public class Building
         }
     }
     
-    
+    /**
+     * Retorna la fuerza de un edificio
+     * @return Fuerza del edificio
+     */
     public int getHardness(){
         return hardness;
     }
     
-    
+    /**
+     * Dice si un edificio no está asolapado con otro
+     * @param xp Posición en x del segundo edificio
+     * @param widthp Ancho del segundo edificio
+     * @return Si el edificio no se asolapa con el segundo edificio
+     */
     public boolean encimaDe(int xp, int widthp){
         return xp+widthp<=x || x+width<=xp;
     }
     
+    /**
+     * Dice si el edificio tiene un héroe en él
+     * @return Si el edificio tiene un héroe en él
+     */
     public boolean hasHeroe(){
         return heroe!=null;
     }
     
+    /**
+     * Modifica el héroe
+     * @param a Nuevo héroe
+     */
     public void setHeroe(Heroe a){
         heroe = a;
     }
     
+    /**
+     * Elimina el héroe
+     */
     public void byeHeroe(){
         heroe=null;
     }
     
+    
+    /**
+     * Retorna la fuerza del héroe en el edificio
+     * @return Fuerza del héroe en el edificio
+     */
+    public int getHeroeStrength(){
+        return (heroe!=null?heroe.getStrength():-1);
+    }
 }

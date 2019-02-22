@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Heroe here.
  * 
@@ -11,7 +11,7 @@ public class Heroe
     private int posx;
     private int posy;
     private String color;
-    public int strength; 
+    private int strength; 
 
     private Triangle body;
     private Circle head;
@@ -109,17 +109,19 @@ public class Heroe
     
     /**
      * Retorna el color del heroe
+     * @param Color del heroe
      */
     public String getColor(){
         return color;
     }
     
     /**
-             * Dice si un heroe choca contra un edificio dado
-             * @param target Edifico objetivo
-             * @param velocity Velocidad de disparo
-             * @param angle Angulo de disparo
-             */
+     * Dice si un heroe choca contra un edificio dado
+     * @param target Edifico objetivo
+     * @param velocity Velocidad de disparo
+     * @param angle Angulo de disparo
+     * @return Si el heroe choca contra el edifico(suponiendo que no hay obstaculos en la trayectoria)
+     */
     public boolean choca(Building target, int velocity, int angle){
         angle = angle%360 + (angle%360<0?360:0);
         double x=target.getX()-posx;
@@ -141,12 +143,13 @@ public class Heroe
     } 
             
             
-            /**
-             * Dice si un heroe aterriza en un edificio dado
-             * @param target Edifico objetivo
-             * @param velocity Velocidad de disparo
-             * @param angle Angulo de disparo
-               */
+    /**
+     * Dice si un heroe aterriza en un edificio dado
+     * @param target Edifico objetivo
+     * @param velocity Velocidad de disparo
+     * @param angle Angulo de disparo
+     * @return Si el heroe aterriza en el edifico (suponiendo que no hay obstáculos en la trayectoria)
+    */
     public boolean aterriza(Building target, int velocity, int angle){
         angle = angle%360 + (angle%360<0?360:0);
         double theta=Math.toRadians(angle);
@@ -168,43 +171,69 @@ public class Heroe
         }
         return ans && !choca(target,velocity,angle);
     }
-            /**
-             * Retorna la posicion en x del heroe
-             */
+    /**
+     * Retorna la posicion en x del heroe       
+     * @return Posición en x del héroe
+     */
     public int getX(){
         return posx;
     }
     
     /**
-             * Retorna la posicion en y del heroe
-             */
+     * Retorna la posicion en y del heroe
+     * @return Posición en y del héroe
+    */
     public int getY(){
         return posy;
     }
     
+    /**
+     * Retorna la fuerza del héroe
+     * @return Fuerza del héroe
+     */
     public int getStrength(){
         return strength;
     }
-
+    
+    /**
+     * Modifica el edificio casa
+     * @param n Nuevo edificio casa
+     */
     public void setCasa(Building n){
         home = n;
     }
     
+    /**
+     * Elimina la casa para el salto
+     */
     public void mudar(){
         home=null;
     }
     
-    
+    /**
+     * Saca al héroe de la simulación
+     */
     public void getOut(){
         home.byeHeroe();
         makeInvisible();
     }
     
-    
+    /**
+     * Retorna la casa del héroe
+     * @param Casa del héroe
+     */
     public Building getCasa(){
         return home;
     }
-
+    
+    /**
+     * Tiempo que le toma al héroe en alcanzar los limites de la simulación en un salto
+     * @param velocity Velocidad del salto
+     * @param angle Ángulo del salto
+     * @param heigth Altura de la ciudad
+     * @param width Ancho de la simulación
+     * @return Tiempo en alcanzar los limites de la ciudad
+     */
     public double timeToDie(int velocity, int angle, int heigth, int width){
         double t;
         double theta = Math.toRadians(angle);
@@ -225,7 +254,13 @@ public class Heroe
         return t;
     }
     
-    
+    /**
+     * Tiempo que le toma al héroe en alcanzar un edificio
+     * @param target Edificio Objetivo
+     * @param angle Ángulo del salto
+     * @param velocity Velocidad del salto
+     * @return Tiempo en alcanzar un edificio dado(si se estrella o no)
+     */
     public double timeToLand(Building target, int angle, int velocity){
         double t;
         double theta = Math.toRadians(angle);
@@ -239,6 +274,9 @@ public class Heroe
         }
         return t;
     }
+    
+    
+   
 }
 
 

@@ -185,6 +185,7 @@ public class CityOfHeroes
     /**
      * Retorna si la estructura está dañada
      * @param x Ubicación de la estructura
+     * @return Si el edifico está dañado
      */
     public boolean isDamaged(int x){
         int obj=-1;
@@ -202,6 +203,7 @@ public class CityOfHeroes
     /**
      * Retorna la fuerza de un héroe
      * @param color Color del heroe que queremos conocer
+     * @return Fuerza del héroe
      */
     public int strength(String color){
         Heroe pib = people.get(color);
@@ -209,13 +211,12 @@ public class CityOfHeroes
         return (pib!=null?pib.getStrength():-1);
     }
     
+    
     /**
      * Retorna la lista de heroes muertos
      */
     public String[] deads(){
-        String[] ans = new String[deads.size()];
-        ans = deads.toArray(ans);
-        return ans;
+        return deads.toArray(new String[deads.size()]);
     }
 
         
@@ -278,7 +279,13 @@ public class CityOfHeroes
         }
         return target;
     }
-    
+    /**
+     * Realiza una parábola de un héroe con unos datos dados
+     * @param pib Heroe que va a saltar
+     * @param velocity Velocidad de salto
+     * @param angle Angulo de salto
+     * @param delta Tiempo entre movimientos según ecuaciones
+     */
     private void parabola(Heroe pib, double t, int velocity,int angle, double delta){
         double theta = Math.toRadians(angle);
         double i=delta;
@@ -321,6 +328,31 @@ public class CityOfHeroes
         }
         return ans;
     }
+    /**
+     * Devuleve la información de la ciudad
+     * @return Un vector con la información de la ciudad
+     */
+    public Vector<Vector<Vector<Integer>>> city(){
+        Vector<Vector<Vector<Integer>>> ans= new Vector<Vector<Vector<Integer>>>(2);
+        ans.add(new Vector<Vector<Integer>>());
+        ans.add(new Vector<Vector<Integer>>());
+        for(int i =0 ;i<towers.size();i++){
+            Vector<Integer> curr = new Vector<Integer>();
+            curr.add(towers.get(i).getX());
+            curr.add(towers.get(i).getWidth());
+            curr.add(towers.get(i).getHeight());
+            curr.add(towers.get(i).getHardness());
+            ans.get(0).add(curr);
+            if(towers.get(i).hasHeroe()){
+                curr = new Vector<Integer>();
+                curr.add(i+1);
+                curr.add(towers.get(i).getHeroeStrength());
+                ans.get(1).add(curr);
+            }
+        }
+        return ans;
+    }
+    
     
     
 }
