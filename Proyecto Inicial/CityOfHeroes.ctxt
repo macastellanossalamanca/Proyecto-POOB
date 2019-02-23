@@ -43,8 +43,9 @@ comment20.text=\n\ Retorna\ una\ velocidad\ a\ partir\ de\ un\ angulo\ y\ un\ pu
 comment21.params=
 comment21.target=void\ undo()
 comment21.text=\n\ Deshace\ la\ ultima\ accion\ realizada\n
-comment22.params=
-comment22.target=void\ zoom()
+comment22.params=v
+comment22.target=void\ zoom(java.lang.String)
+comment22.text=\n\ hace\ zoom\ hacia\ el\ centro\ de\ la\ ciudad\n\ @param\ v\ +\ si\ el\ zoom\ es\ hacia\ adentro\ y\ -\ si\ el\ zoom\ es\ hacia\ afuera\n
 comment3.params=position
 comment3.target=void\ removeBuilding(int)
 comment3.text=\n\ Elimina\ un\ edificio\ de\ la\ ciudad\n\ @param\ position\ Representa\ la\ posicion\ en\ la\ que\ quiero\ que\ el\ edificio\ sea\ borrado.\ Ser\u00E1\ borrado\ si\ x<\=position<x+width\n

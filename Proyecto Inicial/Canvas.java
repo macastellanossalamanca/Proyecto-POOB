@@ -42,6 +42,9 @@ public class Canvas{
     private Image canvasImage;
     private List <Object> objects;
     private HashMap <Object,ShapeDescription> shapes;
+    private double zoomfactor=1;
+    private double prevZoomFactor=1;
+    private boolean zoomer;
     
     /** 
      * Create a Canvas.  
@@ -211,10 +214,20 @@ public class Canvas{
         }
     }
     /**
-     * 
+     * Hace zoom al canvas
      */
-    public void zoom(){
-        graphic.scale(1.5,1.5);
+    public void zoom(String a){
+        zoomer = true;
+        if (a.equals("+")){
+            zoomfactor *= 1.2;
+            canvas.repaint();
+        }
+        if (a.equals("-")){
+            zoomfactor/=1.2;
+            canvas.repaint();
+        }
+        erase();
+        graphic.scale(zoomfactor,zoomfactor);
         redraw();
     }
 

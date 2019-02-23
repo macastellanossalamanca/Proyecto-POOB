@@ -458,8 +458,12 @@ public class CityOfHeroes
             }
         }
     }
-    public void zoom(){
-        Canvas.getCanvas(width,height).zoom();
+    /**
+     * hace zoom hacia el centro de la ciudad
+     * @param v + si el zoom es hacia adentro y - si el zoom es hacia afuera
+     */
+    public void zoom(String v){
+        Canvas.getCanvas(width,height).zoom(v);
 
     }
     
