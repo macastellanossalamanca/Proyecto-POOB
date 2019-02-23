@@ -101,7 +101,7 @@ public class CityOfHeroes
                 if(isVisible) alerta("No es posible eliminar ese edificio");
             }
         }
-        ok = obj!=-1 && towers.get(obj).hasHeroe();
+        ok = obj!=-1;
     }
                     
     /**
@@ -356,7 +356,9 @@ public class CityOfHeroes
         Heroe pib = people.get(heroe);
         if(pib!=null){
             Building target = seekTarget(pib, velocity, angle);
-            ans = target!=null && pib.aterriza(target,velocity,angle);
+            ans = target!=null && pib.aterriza(target,velocity,angle) &&
+                pib.timeToLand(target,angle,velocity) <
+                pib.timeToDie(velocity,angle,height,width);
         }
         return ans;
     }
@@ -407,12 +409,9 @@ public class CityOfHeroes
                 angle = target.getX()>=pib.getX()?angulo:180-angulo;
                 x = (target.getX()>=pib.getX()?target.getX()-pib.getX():-pib.getX()+target.getX()+target.getWidth());
                 tope = (target.getX()>=pib.getX()?target.getX()+target.getWidth()-pib.getX():target.getX()-pib.getX());
-                System.out.printf("x: %d    tope:%d   y: %d\n",x,tope,y);
                 while(x!=tope && ans[0]==0 && ans[1]==0){
                     vel = velDeAngulo(x,y,angle);
-                    System.out.printf("Angulo: %d,   velocidad:  %d\n",angulo,vel);
                     if(vel>0 && seekTarget(pib,vel,angle)==target && isSafeJump(heroe, vel,angle)){
-
                         ans[1]=angle;
                         ans[0]=vel;
                     }
@@ -459,14 +458,60 @@ public class CityOfHeroes
         }
     }
     /**
+     * Rehace la ultima accion deshecha con undo
+     */
+    public void redo(){
+        if (ultimaAccion.equals("addBuilding")){
+            removeBuilding((int)ultObj.get(0));
+        }else if(ultimaAccion.equals("removeBuilding")){
+            addBuilding((int)ultObj.get(0), (int)ultObj.get(1),(int)ultObj.get(2),(int)ultObj.get(3));
+        }else if(ultimaAccion.equals("addHero")){
+            removeHeroe((String)ultObj.get(2));
+        }else if(ultimaAccion.equals("removeHero")){
+            addHeroe((String)ultObj.get(1),(int)ultObj.get(0),(int)ultObj.get(2));
+        }else if(ultimaAccion.equals("jump")){
+            if((int)ultObj.get(2)>90 && (int)ultObj.get(2)<180){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)-90,false);
+            } else if ((int)ultObj.get(2)<90 && (int)ultObj.get(2)>0){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)+90,false);
+            }
+        }
+    }
+    /**
      * hace zoom hacia el centro de la ciudad
      * @param v + si el zoom es hacia adentro y - si el zoom es hacia afuera
      */
-    public void zoom(String v){
-        Canvas.getCanvas(width,height).zoom(v);
+    public void zoom(char v){
+        Canvas.getCanvas(width,height).zoom(Character.toString(v));
 
     }
     
+    /**
+     * Retorna si se puede hacer un salto seguro hasta el edifico dado
+     * @param heroe Heroe a saltar
+     * @param building Numero del edificio objetivo
+     * @return Si hay un salto seguro
+     */
+    public boolean isSafeJump(String heroe, int building){
+        return jumpPlan(heroe,building)[0]!=0;
+    }
+    
+    /**
+     * Hace un buen salto hasta el edificio objetivo(Si hay un buen salto)
+     * @param heroe Heroe a saltar
+     * @param building Edificio objetivo
+     */
+    public void jump(String heroe, int building){
+        int plan[] = jumpPlan(heroe, building);
+        if(plan[0]>0 && plan[1]>0){
+            jump(heroe, plan[0], plan[1], false);
+            ok=true;
+        } else{
+            ok=false;
+        }
+        
+    }
+     
 }
 
                     
