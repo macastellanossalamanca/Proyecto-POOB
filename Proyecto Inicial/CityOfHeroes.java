@@ -5,8 +5,8 @@ import java.lang.*;
 /**
  * Una ciudad construida con edificios y con heroes en ella, y en muchos edificios
  * 
- * @author (David Vasquez - Miguel Castellanos) 
- * @version (a version number or a date)
+ * @author  (Miguel Castellanos - Alejandro Vasquez)
+ * @version (2.0)
  */
 public class CityOfHeroes  
 { 

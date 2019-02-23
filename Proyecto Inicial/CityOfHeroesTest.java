@@ -8,8 +8,8 @@ import org.junit.Test;
 /**
  * The test class CityOfHeroesTest.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * @author  (Miguel Castellanos - Alejandro Vasquez)
+ * @version (2.0)
  */
 public class CityOfHeroesTest
 {

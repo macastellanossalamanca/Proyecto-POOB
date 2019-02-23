@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Building
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Building\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Clase\ que\ modela\ un\ edificio\ para\ la\ ciudad.\r\n\ \r\n\ @author\ \ (Miguel\ Castellanos\ -\ Alejandro\ Vasquez)\r\n\ @version\ (2.0)\r\n
 comment1.params=x\ height\ width\ hardness\ help
 comment1.target=Building(int,\ int,\ int,\ int,\ int)
 comment1.text=\r\n\ Constructor\ -\ Representaci\u00F3n\ de\ un\ edificio\r\n\ @param\ x\ posicion\ en\ x\ del\ edificio\r\n\ @param\ height\ Altura\ del\ edificio\r\n\ @param\ width\ Ancho\ del\ edificio\r\n\ @param\ hardness\ Resistencia\ del\ edifico\r\n\ @param\ help\ Alto\ de\ pantalla\ para\ visualizaci\u00F3n\ del\ edificio\r\n

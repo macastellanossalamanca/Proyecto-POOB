@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Heroe
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Heroe\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Clase\ que\ modela\ un\ super\ Heroe.\r\n\ \r\n\ @author\ \ (Miguel\ Castellanos\ -\ Alejandro\ Vasquez)\r\n\ @version\ (2.0)\r\n
 comment1.params=posx\ posy\ color\ fuerza
 comment1.target=Heroe(int,\ int,\ java.lang.String,\ int)
 comment1.text=\r\n\ Constructor\r\n\ @param\ posx\ Posicion\ en\ x\ del\ heroe\r\n\ @param\ posy\ Posicion\ en\ y\ del\ heroe\r\n\ @param\ color\ color\ del\ heroe\r\n\ @param\ fuerza\ Fuerza\ del\ heroe\r\n

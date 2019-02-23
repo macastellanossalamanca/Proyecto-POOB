@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CityOfHeroes
-comment0.text=\r\n\ Una\ ciudad\ construida\ con\ edificios\ y\ con\ heroes\ en\ ella,\ y\ en\ muchos\ edificios\r\n\ \r\n\ @author\ (David\ Vasquez\ -\ Miguel\ Castellanos)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Una\ ciudad\ construida\ con\ edificios\ y\ con\ heroes\ en\ ella,\ y\ en\ muchos\ edificios\r\n\ \r\n\ @author\ \ (Miguel\ Castellanos\ -\ Alejandro\ Vasquez)\r\n\ @version\ (2.0)\r\n
 comment1.params=width\ height
 comment1.target=CityOfHeroes(int,\ int)
 comment1.text=\r\n\ Constructor\r\n\ @param\ width\ Indica\ el\ ancho\ de\ la\ ciudad\r\n\ @param\ height\ Indica\ el\ alto\ maximo\ de\ los\ edificios\r\n
@@ -31,9 +31,13 @@ comment17.text=\r\n\ Dice\ si\ un\ salto\ es\ seguro\r\n\ @param\ heroe\ Heroe\ 
 comment18.params=
 comment18.target=java.util.Vector\ city()
 comment18.text=\r\n\ Devuleve\ la\ informaci\u00F3n\ de\ la\ ciudad\r\n\ @return\ Un\ vector\ con\ la\ informaci\u00F3n\ de\ la\ ciudad\r\n
+comment19.params=heroe\ building
+comment19.target=int[]\ jumpPlan(java.lang.String,\ int)
 comment2.params=x\ width\ height\ hardness
 comment2.target=void\ addBuilding(int,\ int,\ int,\ int)
 comment2.text=\r\n\ Adiciona\ un\ nuevo\ edificio\ a\ la\ ciudad\r\n\ @param\ x\ La\ posici\u00F3n\ en\ x\ del\ edificio\r\n\ @param\ width\ El\ ancho\ del\ edificio\r\n\ @param\ height\ El\ alto\ del\ edificio\r\n\ @parem\ hardness\ La\ dureza\ del\ edificio\r\n
+comment20.params=x\ y\ grados
+comment20.target=int\ velDeAngulo(int,\ int,\ int)
 comment3.params=position
 comment3.target=void\ removeBuilding(int)
 comment3.text=\r\n\ Elimina\ un\ edificio\ de\ la\ ciudad\r\n\ @param\ position\ Representa\ la\ posicion\ en\ la\ que\ quiero\ que\ el\ edificio\ sea\ borrado.\ Ser\u00E1\ borrado\ si\ x<\=position<x+width\r\n
@@ -55,4 +59,4 @@ comment8.text=\r\n\ Vuelve\ la\ ciudad\ visible\r\n
 comment9.params=x
 comment9.target=boolean\ isDamaged(int)
 comment9.text=\r\n\ Retorna\ si\ la\ estructura\ est\u00E1\ da\u00F1ada\r\n\ @param\ x\ Ubicaci\u00F3n\ de\ la\ estructura\r\n\ @return\ Si\ el\ edifico\ est\u00E1\ da\u00F1ado\r\n
-numComments=19
+numComments=21

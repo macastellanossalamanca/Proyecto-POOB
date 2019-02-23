@@ -1,10 +1,10 @@
 
 import java.util.*;
 /**
- * Write a description of class Building here.
+ * Clase que modela un edificio para la ciudad.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  (Miguel Castellanos - Alejandro Vasquez)
+ * @version (2.0)
  */
 public class Building
 {
