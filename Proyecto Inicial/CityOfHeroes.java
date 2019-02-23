@@ -437,8 +437,10 @@ public class CityOfHeroes
         }
         return ans;
     }
+    /**
+     * Deshace la ultima accion realizada
+     */
     public void undo(){
-        System.out.println(ultimaAccion);
         if (ultimaAccion.equals("addBuilding")){
             removeBuilding((int)ultObj.get(0));
         }else if(ultimaAccion.equals("removeBuilding")){
@@ -446,15 +448,21 @@ public class CityOfHeroes
         }else if(ultimaAccion.equals("addHero")){
             removeHeroe((String)ultObj.get(2));
         }else if(ultimaAccion.equals("removeHero")){
-            System.out.println(ultObj.get(0));
-            System.out.println(ultObj.get(1));
-            System.out.println(ultObj.get(2));
             addHeroe((String)ultObj.get(1),(int)ultObj.get(0),(int)ultObj.get(2));
         }else if(ultimaAccion.equals("jump")){
+            if((int)ultObj.get(2)>90 && (int)ultObj.get(2)<180){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)-90,false);
+            } else if ((int)ultObj.get(2)<90 && (int)ultObj.get(2)>0){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)+90,false);
+            }
         }
     }
-    public void zoom(){
-        Canvas.getCanvas(width,height).zoom();
+    /**
+     * hace zoom hacia el centro de la ciudad
+     * @param v + si el zoom es hacia adentro y - si el zoom es hacia afuera
+     */
+    public void zoom(String v){
+        Canvas.getCanvas(width,height).zoom(v);
 
     }
     
