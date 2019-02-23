@@ -1,11 +1,8 @@
 #BlueJ class context
 comment0.target=CityOfHeroesTest
-comment0.text=\r\n\ The\ test\ class\ CityOfHeroesTest.\r\n\r\n\ @author\ \ (Miguel\ Castellanos\ -\ Alejandro\ Vasquez)\r\n\ @version\ (2.0)\r\n
+comment0.text=\n\ The\ test\ class\ CityOfHeroesTest.\n\n\ @author\ \ (Miguel\ Castellanos\ -\ Alejandro\ Vasquez)\n\ @version\ (2.0)\n
 comment1.params=
 comment1.target=void\ setUp()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 comment1.text=\n\ Sets\ up\ the\ test\ fixture.\n\n\ Called\ before\ every\ test\ case\ method.\n
 comment10.params=
 comment10.target=void\ deberiaSerSafeJump()
@@ -22,19 +19,9 @@ comment15.target=void\ deberiaQuitarStrength()
 comment16.params=
 comment16.target=void\ tearDown()
 comment16.text=\n\ Tears\ down\ the\ test\ fixture.\n\n\ Called\ after\ every\ test\ case\ method.\n
-=======
-comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
->>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
-=======
-comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
->>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
-=======
-comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
->>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
 comment2.params=
 comment2.target=void\ deberiaA\u00F1adirEdificios()
 comment3.params=
-<<<<<<< HEAD
 comment3.target=void\ noDeberiaA\u00F1adirEdificios()
 comment4.params=
 comment4.target=void\ deberiaAgregarHeroes()
@@ -49,8 +36,3 @@ comment8.target=void\ deberiaSaltar()
 comment9.params=
 comment9.target=void\ noDeberiaIndicarDa\u00F1o()
 numComments=17
-=======
-comment3.target=void\ tearDown()
-comment3.text=\r\n\ Tears\ down\ the\ test\ fixture.\r\n\r\n\ Called\ after\ every\ test\ case\ method.\r\n
-numComments=4
->>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
