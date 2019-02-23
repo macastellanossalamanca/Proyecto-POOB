@@ -18,6 +18,8 @@ public class CityOfHeroes
     private HashMap<String,Heroe> people;
     private ArrayList<String> deads;
     public static boolean isVisible=false;
+    private String ultimaAccion = "";
+    private ArrayList ultObj = new ArrayList();
                    
     /**
      * Constructor
@@ -61,10 +63,17 @@ public class CityOfHeroes
             }
             towers.get(pos+1).changeColor(Canvas.colores.get(Canvas.actual));
             Canvas.actual +=1; 
-        } else if(isVisible){
-            alerta("No es posible adicionar ese edificio");
+            ultimaAccion = "addBuilding";
+            ultObj = new ArrayList();
+            ultObj.add(x);
+            ultObj.add(height);
+            ultObj.add(width);
+            ultObj.add(hardness);
+        } else if(!posible){
+            if(isVisible) alerta("No es posible adicionar ese edificio");
         }
         ok = posible;
+        
     }
     
     /**
@@ -77,12 +86,19 @@ public class CityOfHeroes
             if(towers.get(i).getX()<=position && position<towers.get(i).getX()+towers.get(i).getWidth()) obj=i;
         }
         if(obj!=-1){
-            if(towers.get(obj).hasHeroe()){
+            if(!towers.get(obj).hasHeroe()){
                 Building pibote=towers.remove(obj);
+                ultObj = new ArrayList();
+                ultObj.add(pibote.getX());
+                ultObj.add(pibote.getHeight());
+                ultObj.add(pibote.getWidth());
+                ultObj.add(pibote.getHardness());
                 pibote.makeInvisible();
                 pibote=null;
-            } else if(isVisible){
-                    alerta("No es posible eliminar ese edificio");
+                ultimaAccion = "removeBuilding";
+            } 
+            else if(towers.get(obj).hasHeroe()){
+                if(isVisible) alerta("No es posible eliminar ese edificio");
             }
         }
         ok = obj!=-1 && towers.get(obj).hasHeroe();
@@ -103,6 +119,13 @@ public class CityOfHeroes
             casa.setHeroe(nuevo);
             nuevo.setCasa(casa);
             people.put(color,nuevo);
+            ultObj = new ArrayList();
+            ultObj.add(casa.getX()+casa.getWidth()/2);
+            ultObj.add(height-casa.getHeight());
+            ultObj.add(color);
+            ultObj.add(strength);
+            ultimaAccion = "addHero";
+            
         } else {
             alerta("No es posible adicionar el heroe");
         }
@@ -117,6 +140,12 @@ public class CityOfHeroes
         Heroe pib = people.remove(color);
         ok = pib!=null;
         if(pib!=null){
+            ultimaAccion = "removeHero";
+            ultObj = new ArrayList();
+            ultObj.add(pib.getX());
+            ultObj.add(pib.getY());
+            ultObj.add(pib.getColor());
+            ultObj.add(pib.getStrength());
             pib.getOut();
         } 
     }                
@@ -168,6 +197,11 @@ public class CityOfHeroes
                 }
             }
         }
+        ultimaAccion = "jump";
+        ultObj = new ArrayList();
+        ultObj.add(color);
+        ultObj.add(velocity);
+        ultObj.add(angle);
     }
                 
     /**
@@ -177,7 +211,6 @@ public class CityOfHeroes
     public void makeInvisible(){
         Canvas.getCanvas(width, height).setVisible(false);
         isVisible = false;
-        
     }
     
     /**
@@ -311,6 +344,26 @@ public class CityOfHeroes
     
     public boolean ok(){
         return ok;
+    }
+    public void undo(){
+        System.out.println(ultimaAccion);
+        if (ultimaAccion.equals("addBuilding")){
+            removeBuilding((int)ultObj.get(0));
+        }else if(ultimaAccion.equals("removeBuilding")){
+            System.out.println(ultObj.get(0));
+            System.out.println(ultObj.get(1));
+            System.out.println(ultObj.get(2));
+            System.out.println(ultObj.get(3));
+            addBuilding((int)ultObj.get(0), (int)ultObj.get(1),(int)ultObj.get(2),(int)ultObj.get(3));
+        }else if(ultimaAccion.equals("addHero")){
+            removeHeroe((String)ultObj.get(2));
+        }else if(ultimaAccion.equals("removeHero")){
+            addHeroe((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2));
+        }else if(ultimaAccion.equals("jump")){
+        }
+    }
+    public void zoom(){
+        Canvas.getCanvas(width,height).zoom();
     }
     
 }

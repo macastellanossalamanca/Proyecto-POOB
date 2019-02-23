@@ -210,5 +210,10 @@ public class Canvas{
             graphic.fill(shape);
         }
     }
+    
+    public void zoom(){
+        graphic.scale(1.5,1.5);
+        redraw();
+    }
 
 }
