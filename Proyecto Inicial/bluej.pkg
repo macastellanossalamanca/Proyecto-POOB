@@ -4,7 +4,11 @@ dependency1.to=Rectangle
 dependency1.type=UsesDependency
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 dependency10.from=CityOfHeroes
+=======
+dependency10.from=Heroe
+>>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
 =======
 dependency10.from=Heroe
 >>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
@@ -36,6 +40,7 @@ dependency5.to=Canvas
 dependency5.type=UsesDependency
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 dependency6.from=Heroe
 dependency6.to=Triangle
 dependency6.type=UsesDependency
@@ -64,11 +69,23 @@ dependency7.to=CityOfHeroes
 dependency7.type=UsesDependency
 dependency8.from=Heroe
 >>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
+=======
+dependency6.from=Triangle
+dependency6.to=Canvas
+dependency6.type=UsesDependency
+dependency7.from=CityOfHeroesTest
+dependency7.to=CityOfHeroes
+dependency7.type=UsesDependency
+dependency8.from=Heroe
+>>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
 dependency8.to=Triangle
 dependency8.type=UsesDependency
 dependency9.from=Heroe
 dependency9.to=Circle
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
+=======
 >>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
 =======
 >>>>>>> c35ceaccc88af98e4bf30c1092efdcf230bde697
