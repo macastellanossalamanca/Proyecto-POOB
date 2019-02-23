@@ -120,8 +120,7 @@ public class CityOfHeroes
             nuevo.setCasa(casa);
             people.put(color,nuevo);
             ultObj = new ArrayList();
-            ultObj.add(casa.getX()+casa.getWidth()/2);
-            ultObj.add(height-casa.getHeight());
+            ultObj.add(towers.indexOf(casa)+1);
             ultObj.add(color);
             ultObj.add(strength);
             ultimaAccion = "addHero";
@@ -142,8 +141,7 @@ public class CityOfHeroes
         if(pib!=null){
             ultimaAccion = "removeHero";
             ultObj = new ArrayList();
-            ultObj.add(pib.getX());
-            ultObj.add(pib.getY());
+            ultObj.add(towers.indexOf(pib.getCasa())+1);
             ultObj.add(pib.getColor());
             ultObj.add(pib.getStrength());
             pib.getOut();
@@ -350,15 +348,14 @@ public class CityOfHeroes
         if (ultimaAccion.equals("addBuilding")){
             removeBuilding((int)ultObj.get(0));
         }else if(ultimaAccion.equals("removeBuilding")){
-            System.out.println(ultObj.get(0));
-            System.out.println(ultObj.get(1));
-            System.out.println(ultObj.get(2));
-            System.out.println(ultObj.get(3));
             addBuilding((int)ultObj.get(0), (int)ultObj.get(1),(int)ultObj.get(2),(int)ultObj.get(3));
         }else if(ultimaAccion.equals("addHero")){
             removeHeroe((String)ultObj.get(2));
         }else if(ultimaAccion.equals("removeHero")){
-            addHeroe((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2));
+            System.out.println(ultObj.get(0));
+            System.out.println(ultObj.get(1));
+            System.out.println(ultObj.get(2));
+            addHeroe((String)ultObj.get(1),(int)ultObj.get(0),(int)ultObj.get(2));
         }else if(ultimaAccion.equals("jump")){
         }
     }
