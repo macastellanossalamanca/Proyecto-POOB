@@ -129,7 +129,7 @@ public class Heroe
         double y;
         int k= home==null?target.getHeight():target.getHeight()-home.getHeight();
         boolean ans=false;
-        if(angle == 90 || angle ==270){ 
+        if(angle == 90 || angle ==270 || velocity==0){ 
             ans=false;
         } else if((270<angle && angle< 360) || (0<= angle && angle<90)){
             y=x*Math.tan(theta)-9.8*Math.pow(x,2)/(2*Math.pow(velocity,2)*Math.pow(Math.cos(theta),2));
@@ -158,7 +158,7 @@ public class Heroe
         double c= home==null?target.getHeight():target.getHeight()-home.getHeight();
         boolean ans=false;
         double cal;  
-        if(Math.pow(b,2)-4*a*c>=0){
+        if(Math.pow(b,2)-4*a*c>=0 && velocity!=0){
             if(angle == 90 || angle ==270){
                 ans=true;
             } else if((270<angle && angle< 360) || (0<= angle && angle<90)){

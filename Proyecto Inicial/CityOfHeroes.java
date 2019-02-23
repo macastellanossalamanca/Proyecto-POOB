@@ -353,7 +353,59 @@ public class CityOfHeroes
         return ans;
     }
     
+    /**
+     * Dado un heroe y un edifico, busca un angulo y velocidad que haga aterrizar al héroe
+     * @param heroe Heroe a saltar
+     * @param building Edificio objetivo
+     * @return Velocidad y angulo de salto
+     */
+    public int[] jumpPlan(String heroe, int building){
+        Building target = (building>0 && building<=towers.size()?towers.get(building-1):null);
+        Heroe pib = people.get(heroe);
+        int ans[] =  new int[2];
+        ans[0]=0;
+        ans[1]=0;
+        if(target!=null && pib!=null){
+            int delta=(target.getX()>=pib.getX()?1:-1);
+            int x,y=-height+pib.getY()+target.getHeight();
+            int tope;
+            int vel;
+            int angle;
+            for(int angulo = 1; angulo<=89 && ans[0]==0 && ans[1]==0; angulo++){
+                angle = target.getX()>=pib.getX()?angulo:180-angulo;
+                x = (target.getX()>=pib.getX()?target.getX()-pib.getX():-pib.getX()+target.getX()+target.getWidth());
+                tope = (target.getX()>=pib.getX()?target.getX()+target.getWidth()-pib.getX():target.getX()-pib.getX());
+                System.out.printf("x: %d    tope:%d   y: %d\n",x,tope,y);
+                while(x!=tope && ans[0]==0 && ans[1]==0){
+                    vel = velDeAngulo(x,y,angle);
+                    System.out.printf("Angulo: %d,   velocidad:  %d\n",angulo,vel);
+                    if(vel>0 && seekTarget(pib,vel,angle)==target && isSafeJump(heroe, vel,angle)){
+
+                        ans[1]=angle;
+                        ans[0]=vel;
+                    }
+                    x+=delta;
+                }
+            }
+        }
+        return ans;
+    }
     
+    /**
+     * Retorna una velocidad a partir de un angulo y un punto en el plano
+     * @param x Punto en x
+     * @param y Punto en y
+     * @param grados Angulo en grados
+     * @return Velocidad positiva(Si es negativa significa que no es posible llegar a ese punto)
+     */
+    private int velDeAngulo(int x, int y, int grados){
+        int ans=-1;
+        double theta=Math.toRadians(grados);
+        if(y-x*Math.tan(theta)<0){
+            ans=(int)Math.sqrt((9.8*x*x)/(2*Math.pow(Math.cos(theta),2)*(-y+x*Math.tan(theta))));
+        }
+        return ans;
+    }
     
 }
 
