@@ -458,6 +458,26 @@ public class CityOfHeroes
         }
     }
     /**
+     * Rehace la ultima accion deshecha con undo
+     */
+    public void redo(){
+        if (ultimaAccion.equals("addBuilding")){
+            removeBuilding((int)ultObj.get(0));
+        }else if(ultimaAccion.equals("removeBuilding")){
+            addBuilding((int)ultObj.get(0), (int)ultObj.get(1),(int)ultObj.get(2),(int)ultObj.get(3));
+        }else if(ultimaAccion.equals("addHero")){
+            removeHeroe((String)ultObj.get(2));
+        }else if(ultimaAccion.equals("removeHero")){
+            addHeroe((String)ultObj.get(1),(int)ultObj.get(0),(int)ultObj.get(2));
+        }else if(ultimaAccion.equals("jump")){
+            if((int)ultObj.get(2)>90 && (int)ultObj.get(2)<180){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)-90,false);
+            } else if ((int)ultObj.get(2)<90 && (int)ultObj.get(2)>0){
+                jump((String)ultObj.get(0),(int)ultObj.get(1),(int)ultObj.get(2)+90,false);
+            }
+        }
+    }
+    /**
      * hace zoom hacia el centro de la ciudad
      * @param v + si el zoom es hacia adentro y - si el zoom es hacia afuera
      */
